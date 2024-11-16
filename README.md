@@ -41,6 +41,8 @@ This mini project is a Windows Forms application that validates user inputs, enc
 - Inserts user data into a users table:
   
     - **Fields:** First Name, Last Name, Address, Gender, Email, Phone, Username, Password (hashed).
+
+![Baza](png/uzytkownik.PNG))
  
 ## 📊 User Feedback
 
