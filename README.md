@@ -1,4 +1,4 @@
-# Registration Form Validation and Database Integration 🚀
+#  Registration Form Validation and Database Integration 
 
 This mini project is a Windows Forms application that validates user inputs, encrypts passwords, and stores data in a PostgreSQL database. It combines robust form validation, secure password management, and intuitive feedback for users.
 
@@ -73,11 +73,11 @@ This mini project is a Windows Forms application that validates user inputs, enc
  
 ## Database Setup 🛠️    
 
-- 1. Create a PostgreSQL database:
+-  Create a PostgreSQL database:
 
           CREATE DATABASE projektCsharp;
 
-- 2. Create 'users' table:
+-  Create 'users' table:
 
          CREATE TABLE users (
           id SERIAL PRIMARY KEY,
@@ -90,3 +90,26 @@ This mini project is a Windows Forms application that validates user inputs, enc
           username VARCHAR(50),
           password TEXT
          );
+- Configure the connection string in the code:
+
+       Server=localhost;Port=5432;Username=postgres;Password=Password;Database=ProjektCsharp
+
+## 🔐 How Password Encryption Works 
+
+- Converts the plaintext password to bytes.
+- Uses the SHA256 algorithm to generate a cryptographic hash.
+- Stores the hash in the database.
+  
+**🔑 Example Hashing Function:**
+
+![Hash](png/sha256.PNG)
+
+
+## 🖼️ Application Screenshot 
+
+![Panel](png/panel_rejestracja.PNG)
+
+## 📜License 
+
+This project is licensed under the MIT License.
+
