@@ -55,7 +55,7 @@ This mini project is a Windows Forms application that validates user inputs, enc
 - **SHA256:** Cryptographic hash algorithm.
 - **Regex:** For validating user inputs. 
  
-## Input Validation Examples ✅
+## ✅ Input Validation Examples 
 
 **✉️ Email Validation:**
 
