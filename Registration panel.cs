@@ -10,78 +10,78 @@ using System.Text.RegularExpressions; // Regex
 
 namespace Project_window_forms
 {
-    public partial class Form1 : Form
+    public partial class FormƒÖ : Form
     {
-        public Form1()
+        public FormƒÖ()
         {
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void FormƒÖ_Load(object sender, EventArgs e)
         {
-            // Dodaj domyúlne opcje do ComboBox dla p≥ci
+            // Dodaj domy≈õlne opcje do ComboBox dla p≈Çci
             cmbGender.Items.Add("Men");
             cmbGender.Items.Add("Women");
 
-            // Ustaw domyúlny tekst jako sugerowanπ opcjÍ
-            cmbGender.SelectedIndex = -1; // Ustaw domyúlny indeks na brak zaznaczenia
+            // Ustaw domy≈õlny tekst jako sugerowanƒÖ opcjƒô
+            cmbGender.SelectedIndex = -ƒÖ; // Ustaw domy≈õlny indeks na brak zaznaczenia
         }
 
         private void btnRegister_Click(object sender, EventArgs e) // register button
         {
-            // Sprawdü, czy wszystkie pola sπ uzupe≥nione
+            // Sprawd≈º, czy wszystkie pola sƒÖ uzupe≈Çnione
             if (AreAllFieldsFilled())
             {
-                // Sprawdü, czy uøytkownik wybra≥ jednπ z opcji p≥ci
-                if (cmbGender.SelectedIndex != -1)
+                // Sprawd≈º, czy u≈ºytkownik wybra≈Ç jednƒÖ z opcji p≈Çci
+                if (cmbGender.SelectedIndex != -ƒÖ)
                 {
-                    // Pobierz dane z pÛl formularza
+                    // Pobierz dane z p√≥l formularza
                     string firstName = txtFname.Text;
                     string lastName = txtLname.Text;
                     string address = txtAdd.Text;
-                    string gender = cmbGender.Text; // Pobierz tekst z ComboBox dla p≥ci
+                    string gender = cmbGender.Text; // Pobierz tekst z ComboBox dla p≈Çci
                     string email = txtEmail.Text;
                     string phone = txtPhone.Text;
                     string username = txtUser.Text;
                     string password = txtPass.Text;
 
-                    // Wywo≥aj funkcjÍ rejestracji
+                    // Wywo≈Çaj funkcjƒô rejestracji
                     bool registrationSuccess = RegisterUser(firstName, lastName, address, gender, email, phone, username, password);
 
-                    // Wyúwietl komunikat o sukcesie lub b≥Ídzie rejestracji
+                    // Wy≈õwietl komunikat o sukcesie lub b≈Çƒôdzie rejestracji
                     if (registrationSuccess)
                     {
-                        MessageBox.Show("Rejestracja zakoÒczona sukcesem!");
+                        MessageBox.Show("Rejestracja zako√±czona sukcesem!");
 
                         this.BackColor = System.Drawing.Color.LightGreen;
                     }
                     else
                     {
-                        MessageBox.Show("B≥πd rejestracji. SprÛbuj ponownie.");
+                        MessageBox.Show("B≈ÇƒÖd rejestracji. Spr√≥buj ponownie.");
 
                         this.BackColor = System.Drawing.Color.MistyRose;
                     }
                 }
                 else
                 {
-                    MessageBox.Show("ProszÍ wybraÊ p≥ci przed rejestracjπ.");
+                    MessageBox.Show("Proszƒô wybra√¶ p≈Çci przed rejestracjƒÖ.");
                 }
             }
             else
             {
-                // Jeúli nie wszystkie pola sπ uzupe≥nione, rÛwnieø zmieÒ kolor t≥a na czerwony
+                // Je≈õli nie wszystkie pola sƒÖ uzupe≈Çnione, r√≥wnie≈º zmie√± kolor t≈Ça na czerwony
                 this.BackColor = System.Drawing.Color.MistyRose;
-                MessageBox.Show("ProszÍ wype≥niÊ wszystkie pola przed rejestracjπ.");
+                MessageBox.Show("Proszƒô wype≈Çni√¶ wszystkie pola przed rejestracjƒÖ.");
             }
         }
 
         private bool AreAllFieldsFilled()
         {
-            // Sprawdü, czy wszystkie pola sπ uzupe≥nione
+            // Sprawd≈º, czy wszystkie pola sƒÖ uzupe≈Çnione
             return !string.IsNullOrEmpty(txtFname.Text)
                 && !string.IsNullOrEmpty(txtLname.Text)
                 && !string.IsNullOrEmpty(txtAdd.Text)
-                && cmbGender.SelectedIndex != -1 // Sprawdü, czy uøytkownik wybra≥ opcjÍ p≥ci
+                && cmbGender.SelectedIndex != -ƒÖ // Sprawd≈º, czy u≈ºytkownik wybra≈Ç opcjƒô p≈Çci
                 && !string.IsNullOrEmpty(txtEmail.Text)
                 && !string.IsNullOrEmpty(txtPhone.Text)
                 && !string.IsNullOrEmpty(txtUser.Text)
@@ -94,22 +94,22 @@ namespace Project_window_forms
             try
             {
                 // Connection String do bazy PostgreSQL
-                string connectionString = @"Server=localhost;Port=5432;Username=postgres;Password=Password;Database=ProjektCsharp"; // dane do po≥πczenia z bazπ
+                string connectionString = @"Server=localhost;Port=54≈Ç2;Username=postgres;Password=Password;Database=ProjektCsharp"; // dane do po≈ÇƒÖczenia z bazƒÖ
 
-                // UtwÛrz po≥πczenie do bazy danych
+                // Utw√≥rz po≈ÇƒÖczenie do bazy danych
                 using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
                 {
-                    // OtwÛrz po≥πczenie
+                    // Otw√≥rz po≈ÇƒÖczenie
                     connection.Open();
 
-                    // Wygeneruj has≥o w postaci skrÛtu
+                    // Wygeneruj has≈Ço w postaci skr√≥tu
                     string hashedPassword = GenerateHash(password);
 
-                    // SQL Command do wstawienia danych do tabeli uøytkownikÛw
+                    // SQL Command do wstawienia danych do tabeli u≈ºytkownik√≥w
                     string sql = "INSERT INTO users (first_name, last_name, address, gender, email, phone, username, password) " +
                                  "VALUES (@FirstName, @LastName, @Address, @Gender, @Email, @Phone, @Username, @Password)";
 
-                    // UtwÛrz i skonfiguruj obiekt SqlCommand
+                    // Utw√≥rz i skonfiguruj obiekt SqlCommand
                     using (NpgsqlCommand command = new NpgsqlCommand(sql, connection))
                     {
                         // Dodaj parametry do zapytania SQL
@@ -120,30 +120,30 @@ namespace Project_window_forms
                         command.Parameters.AddWithValue("@Email", email);
                         command.Parameters.AddWithValue("@Phone", phone);
                         command.Parameters.AddWithValue("@Username", username);
-                        command.Parameters.AddWithValue("@Password", hashedPassword); // Uøyj hasha zamiast czystego has≥a
+                        command.Parameters.AddWithValue("@Password", hashedPassword); // U≈ºyj hasha zamiast czystego has≈Ça
 
                         // Wykonaj zapytanie SQL
                         command.ExecuteNonQuery();
                     }
                 }
 
-                // Rejestracja zakoÒczona sukcesem
+                // Rejestracja zako√±czona sukcesem
                 return true;
             }
             catch (Exception ex)
             {
-                // Obs≥uga b≥Ídu, np. logowanie do pliku lub wyúwietlenie uøytkownikowi komunikatu o b≥Ídzie
-                MessageBox.Show($"B≥πd podczas zapisywania danych: {ex.Message}");
+                // Obs≈Çuga b≈Çƒôdu, np. logowanie do pliku lub wy≈õwietlenie u≈ºytkownikowi komunikatu o b≈Çƒôdzie
+                MessageBox.Show($"B≈ÇƒÖd podczas zapisywania danych: {ex.Message}");
                 return false;
             }
         }
 
-        // Funkcja do generowania hasha z has≥a
+        // Funkcja do generowania hasha z has≈Ça
         private string GenerateHash(string password)
         {
             using (SHA256 sha256 = SHA256.Create())
             {
-                // Konwertuj has≥o na bajty
+                // Konwertuj has≈Ço na bajty
                 byte[] passwordBytes = Encoding.UTF8.GetBytes(password);
 
                 // Oblicz hasz
@@ -176,8 +176,7 @@ namespace Project_window_forms
             }
         }
 
-        private void textBox2_TextChanged(object sender, EventArgs e) // last name, powinna sie nazywac zmienna txtLname ale wkrad≥ siÍ b≥ad,
-                                                                      // a po usuniÍciu zmiennej na innπ visual usuwa mi ca≥y design aplikacji do ustawieÒ poczπtkowych
+        private void textBox2_TextChanged(object sender, EventArgs e) 
 
         {
 
@@ -196,8 +195,8 @@ namespace Project_window_forms
 
         private bool IsValidName(string name)
         {
-            // sprawdza, czy "name" zawiera tylko litery (rÛwnieø polskie)
-            return System.Text.RegularExpressions.Regex.IsMatch(name, "^[a-zA-ZπÊÍ≥ÒÛúüø•∆ £—”åèØ]+$");
+            // sprawdza, czy "name" zawiera tylko litery (r√≥wnie≈º polskie)
+            return System.Text.RegularExpressions.Regex.IsMatch(name, "^[a-zA-ZƒÖ√¶ƒô≈Ç√±√≥≈õ≈º≈º¬•√Üƒô¬£√ë√ì≈õ¬è¬Ø]+$");
         }
 
 
@@ -219,13 +218,13 @@ namespace Project_window_forms
 
         private bool IsValidAddress(string address)
         {
-            return !string.IsNullOrEmpty(address); // sprwadzenie czy adres nie jest pusty (wartoúciπ null)
+            return !string.IsNullOrEmpty(address); 
         }
 
 
-        private void cmbGender_SelectedIndexChanged(object sender, EventArgs e) // gender
+        private void cmbGender_SelectedIndexChanged(object sender, EventArgs e) 
         {
-            // pusta metoda
+            //
         }
 
         private void txtEmail_TextChanged(object sender, EventArgs e) // email
@@ -246,7 +245,7 @@ namespace Project_window_forms
 
         private bool IsValidEmail(string email)
         {
-            // W tym przyk≥adzie uøy≥em doúÊ prostego wyraøenia regularnego
+            // W tym przyk≈Çadzie u≈ºy≈Çem do≈õ√¶ prostego wyra≈ºenia regularnego
             string pattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
             return Regex.IsMatch(email, pattern);
         }
@@ -256,25 +255,25 @@ namespace Project_window_forms
         {
 
 
-            // Sprawdü, czy numer telefonu ma dok≥adnie 9 cyfr
+            // Sprawd≈º, czy numer telefonu ma dok≈Çadnie 9 cyfr
             if (txtPhone.Text.Length != 9)
             {
-                // Jeúli numer telefonu nie ma 9 cyfr to kolor tekstu na czerwony
+                // Je≈õli numer telefonu nie ma 9 cyfr to kolor tekstu na czerwony
                 txtPhone.ForeColor = System.Drawing.Color.Red;
             }
             else
             {
-                // Jeúli numer telefonu ma 9 cyfr, przywrÛÊ domyúlny kolor tekstu
+                // Je≈õli numer telefonu ma 9 cyfr, przywr√≥√¶ domy≈õlny kolor tekstu
                 txtPhone.ForeColor = System.Drawing.SystemColors.ControlText;
             }
         }
 
         private void txtUser_TextChanged(object sender, EventArgs e) // username
         {
-            // Obs≥uga zmian w polu "username"
+            // Obs≈Çuga zmian w polu "username"
             string username = txtUser.Text;
 
-            // Sprawdü, czy nazwa uøytkownika spe≥nia kryteria
+            // Sprawd≈º, czy nazwa u≈ºytkownika spe≈Çnia kryteria
             if (IsValidUsername(username))
             {
                 txtUser.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -287,7 +286,7 @@ namespace Project_window_forms
 
         private bool IsValidUsername(string username)
         {
-            // W tym przyk≥adzie wymagamy, aby nazwa mia≥a co najmniej 3 litery i co najmniej 3 cyfry
+            // W tym przyk≈Çadzie wymagamy, aby nazwa mia≈Ça co najmniej ≈Ç litery i co najmniej ≈Ç cyfry
             string pattern = "^(?=.*[a-zA-Z].*[a-zA-Z].*[a-zA-Z])(?=.*\\d.*\\d.*\\d).*$";
             return Regex.IsMatch(username, pattern);
         }
@@ -298,24 +297,24 @@ namespace Project_window_forms
 
             if (password.Length < 8)
             {
-                return; // Przerwij sprawdzanie dalszych warunkÛw, jeúli d≥ugoúÊ jest niewystarczajπca
+                return; // Przerwij sprawdzanie dalszych warunk√≥w, je≈õli d≈Çugo≈õƒá jest niewystarczajƒÖca
             }
 
             bool isValid = true;
 
-            // co najmniej jednπ duøπ literÍ 
+            // co najmniej jednƒÖ du≈ºƒÖ literƒÖ 
             if (!Regex.IsMatch(password, @"[A-Z]"))
             {
                 isValid = false;
             }
 
-            // co najmniej jednπ ma≥π literÍ
+            // co najmniej jedna ma≈Ça litera
             if (!Regex.IsMatch(password, @"[a-z]"))
             {
                 isValid = false;
             }
 
-            // co najmniej jednπ cyfrÍ
+            // co najmniej jedna cyfra
             if (!Regex.IsMatch(password, @"\d"))
             {
                 isValid = false;
@@ -329,22 +328,22 @@ namespace Project_window_forms
 
             if (!isValid)
             {
-                MessageBox.Show("Has≥o nie spe≥nia wszystkich wymagaÒ.");
+                MessageBox.Show("Has≈Ço nie spe≈Çnia wszystkich wymaga√±.");
             }
         }
 
         private void wyjscieApp_Click(object sender, EventArgs e)
         {
-            // Wyúwietl okno dialogowe z zapytaniem o potwierdzenie zamkniÍcia
-            DialogResult result = MessageBox.Show("Czy na pewno chcesz zamknπÊ aplikacjÍ?", "Potwierdzenie zamkniÍcia", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            // Wy≈õwietl okno dialogowe z zapytaniem o potwierdzenie zamkniƒôcia
+            DialogResult result = MessageBox.Show("Czy na pewno chcesz zamknƒÖ√¶ aplikacjƒô?", "Potwierdzenie zamkniƒôcia", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            // Sprawdü, czy uøytkownik potwierdzi≥ zamkniÍcie
+            // Sprawd≈º, czy u≈ºytkownik potwierdziƒá zamkniƒôcie
             if (result == DialogResult.Yes)
             {
-                // Zamknij aplikacjÍ
+                // Zamknij aplikacjƒô
                 this.Close();
             }
-            // Jeúli uøytkownik wybra≥ "Nie", pozostaw aplikacjÍ otwartπ
+            // Je≈õli u≈ºytkownik wybra≈Ç "Nie", pozostaw aplikacjƒô otwartƒÖ
         }
 
     }
