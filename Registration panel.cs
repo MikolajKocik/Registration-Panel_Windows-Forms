@@ -64,14 +64,14 @@ namespace Project_window_forms
                 }
                 else
                 {
-                    MessageBox.Show("Proszę wybraæ płci przed rejestracją.");
+                    MessageBox.Show("Proszę wybrać płci przed rejestracją.");
                 }
             }
             else
             {
                 // Jeśli nie wszystkie pola są uzupełnione, również zmieñ kolor tła na czerwony
                 this.BackColor = System.Drawing.Color.MistyRose;
-                MessageBox.Show("Proszę wypełniæ wszystkie pola przed rejestracją.");
+                MessageBox.Show("Proszę wypełnić wszystkie pola przed rejestracją.");
             }
         }
 
@@ -196,7 +196,7 @@ namespace Project_window_forms
         private bool IsValidName(string name)
         {
             // sprawdza, czy "name" zawiera tylko litery (również polskie)
-            return System.Text.RegularExpressions.Regex.IsMatch(name, "^[a-zA-Ząæęłñóśżż¥Æę£ÑÓś¯]+$");
+            return System.Text.RegularExpressions.Regex.IsMatch(name, "^[a-zA-Ząćęłñóśżż¥ćę£ÑÓś¯]+$");
         }
 
 
@@ -245,7 +245,7 @@ namespace Project_window_forms
 
         private bool IsValidEmail(string email)
         {
-            // W tym przykładzie użyłem dośæ prostego wyrażenia regularnego
+            // W tym przykładzie użyłem dość prostego wyrażenia regularnego
             string pattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
             return Regex.IsMatch(email, pattern);
         }
@@ -263,7 +263,7 @@ namespace Project_window_forms
             }
             else
             {
-                // Jeśli numer telefonu ma 9 cyfr, przywróæ domyślny kolor tekstu
+                // Jeśli numer telefonu ma 9 cyfr, przywróć domyślny kolor tekstu
                 txtPhone.ForeColor = System.Drawing.SystemColors.ControlText;
             }
         }
@@ -335,7 +335,7 @@ namespace Project_window_forms
         private void wyjscieApp_Click(object sender, EventArgs e)
         {
             // Wyświetl okno dialogowe z zapytaniem o potwierdzenie zamknięcia
-            DialogResult result = MessageBox.Show("Czy na pewno chcesz zamknąæ aplikację?", "Potwierdzenie zamknięcia", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult result = MessageBox.Show("Czy na pewno chcesz zamknąć aplikację?", "Potwierdzenie zamknięcia", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             // Sprawdż, czy użytkownik potwierdzić zamknięcie
             if (result == DialogResult.Yes)
