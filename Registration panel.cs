@@ -10,14 +10,14 @@ using System.Text.RegularExpressions; // Regex
 
 namespace Project_window_forms
 {
-    public partial class Formą : Form
+    public partial class Forms : Form
     {
-        public Formą()
+        public Forms()
         {
             InitializeComponent();
         }
 
-        private void Formą_Load(object sender, EventArgs e)
+        private void Forms_Load(object sender, EventArgs e)
         {
             // Dodaj domyślne opcje do ComboBox dla płci
             cmbGender.Items.Add("Men");
